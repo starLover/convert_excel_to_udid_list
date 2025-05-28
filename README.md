@@ -1,0 +1,2 @@
+# convert_excel_to_udid_list
+批量处理excel统计的udid生成苹果设备列表
