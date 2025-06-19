@@ -1,4 +1,5 @@
 import pandas as pd
+from pypinyin import lazy_pinyin
 
 # 定义 Excel 文件路径和工作表名称
 excel_file_path = 'UDID.xlsx'
@@ -9,7 +10,8 @@ try:
     df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
     # 交换第一第二两列数据
     df.iloc[:, [0, 1]] = df.iloc[:, [1, 0]].values
-
+    # 将第二列汉字转为拼音
+    df.iloc[:, 1] = df.iloc[:, 1].apply(lambda x: ''.join(lazy_pinyin(x)))
     # 定义输出 TXT 文件的路径
     txt_file_path = 'multiple-device-upload.txt'
 
